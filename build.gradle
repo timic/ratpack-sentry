@@ -1,0 +1,66 @@
+buildscript {
+  repositories {
+    jcenter()
+  }
+}
+
+plugins {
+  id 'groovy'
+  id 'maven-publish'
+  id 'jacoco'
+  id 'com.jfrog.bintray' version '1.8.4'
+  id "com.github.hierynomus.license" version "0.14.0"
+  id 'com.palantir.git-version' version '0.10.1'
+  id 'com.github.ben-manes.versions' version '0.20.0'
+}
+
+group 'com.github.timic'
+version gitVersion()
+
+repositories {
+  jcenter()
+}
+
+dependencies {
+  compile "io.ratpack:ratpack-core:$ratpackVersion"
+  compile "io.sentry:sentry:$sentryVersion"
+
+  testCompile 'org.spockframework:spock-core:1.1-groovy-2.4'
+  testCompile "io.ratpack:ratpack-groovy-test:$ratpackVersion"
+  testCompile "io.sentry:sentry-logback:$sentryVersion"
+  testCompile 'org.skyscreamer:jsonassert:1.5.0'
+}
+
+
+publishing {
+  publications {
+    ratpackSentry(MavenPublication) {
+      from components.java
+    }
+  }
+}
+
+bintray {
+  user = System.getenv("BINTRAY_USER")
+  key = System.getenv("BINTRAY_KEY")
+  publications = ["ratpackSentry"]
+  pkg {
+    repo = "generic"
+    name = "ratpack-sentry"
+    userOrg = user
+    licenses = ['Apache-2.0']
+    vcsUrl = 'https://github.com/timic/ratpack-sentry.git'
+    labels = ['ratpack', 'sentry']
+  }
+}
+
+jar.dependsOn(check)
+
+jacocoTestReport {
+  reports {
+    xml.enabled true
+    html.enabled false
+  }
+}
+
+check.dependsOn jacocoTestReport
