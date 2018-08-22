@@ -25,7 +25,7 @@ dependencies {
   compile "io.ratpack:ratpack-core:$ratpackVersion"
   compile "io.sentry:sentry:$sentryVersion"
 
-  testCompile 'org.spockframework:spock-core:1.1-groovy-2.4'
+  testCompile 'org.spockframework:spock-core:1.2-RC1-groovy-2.5'
   testCompile "io.ratpack:ratpack-groovy-test:$ratpackVersion"
   testCompile "io.sentry:sentry-logback:$sentryVersion"
   testCompile 'org.skyscreamer:jsonassert:1.5.0'
