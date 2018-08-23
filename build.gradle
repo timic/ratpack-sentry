@@ -24,13 +24,15 @@ repositories {
 dependencies {
   compile "io.ratpack:ratpack-core:$ratpackVersion"
   compile "io.sentry:sentry:$sentryVersion"
-
+  
+  testCompile 'org.codehaus.groovy:groovy-all:2.5.2'
   testCompile 'org.spockframework:spock-core:1.2-RC1-groovy-2.5'
-  testCompile "io.ratpack:ratpack-groovy-test:$ratpackVersion", {
-    exclude module: "groovy-all"
-  }
+  testCompile "io.ratpack:ratpack-groovy-test:$ratpackVersion"
   testCompile "io.sentry:sentry-logback:$sentryVersion"
   testCompile 'org.skyscreamer:jsonassert:1.5.0'
+
+  // for jdk 9, 10 compatibility
+  testCompile "javax.activation:activation:1.1.1"
 }
 
 
