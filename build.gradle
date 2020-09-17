@@ -6,12 +6,13 @@ buildscript {
 
 plugins {
   id 'groovy'
+  id 'java-library'
   id 'maven-publish'
   id 'jacoco'
-  id 'com.jfrog.bintray' version '1.8.4'
-  id "com.github.hierynomus.license" version "0.14.0"
-  id 'com.palantir.git-version' version '0.10.1'
-  id 'com.github.ben-manes.versions' version '0.20.0'
+  id 'com.jfrog.bintray' version '1.8.5'
+  id "com.github.hierynomus.license" version "0.15.0"
+  id 'com.palantir.git-version' version '0.12.3'
+  id 'com.github.ben-manes.versions' version '0.33.0'
 }
 
 group 'com.github.timic'
@@ -22,12 +23,11 @@ repositories {
 }
 
 dependencies {
-  compile "io.ratpack:ratpack-core:$ratpackVersion"
-  compile "io.sentry:sentry:$sentryVersion"
-  
-  testCompile 'org.codehaus.groovy:groovy-all:2.5.2'
-  testCompile 'org.spockframework:spock-core:1.2-RC1-groovy-2.5'
+  api "io.ratpack:ratpack-core:$ratpackVersion"
+  api "io.sentry:sentry:$sentryVersion"
+
   testCompile "io.ratpack:ratpack-groovy-test:$ratpackVersion"
+  testCompile 'org.spockframework:spock-core:1.3-groovy-2.5'
   testCompile "io.sentry:sentry-logback:$sentryVersion"
   testCompile 'org.skyscreamer:jsonassert:1.5.0'
 
