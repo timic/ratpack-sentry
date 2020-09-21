@@ -23,7 +23,7 @@ repositories {
 }
 
 dependencies {
-  api "io.ratpack:ratpack-core:$ratpackVersion"
+  compileOnly "io.ratpack:ratpack-core:$ratpackVersion"
   api "io.sentry:sentry:$sentryVersion"
 
   testCompile "io.ratpack:ratpack-groovy-test:$ratpackVersion"
