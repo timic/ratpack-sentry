@@ -250,7 +250,8 @@ class RatpackHttpInterfaceFunctionalSpec extends Specification {
         log.error("Server error", err)
         ctx.response.status(500).send()
       } as ServerErrorHandler)
-      add(MDCInterceptor)
+      add(MDCInterceptor.instance())
+      add(SentryInterceptor.instance())
     }
     handlers {
       path "fail", {
@@ -284,6 +285,14 @@ class RatpackHttpInterfaceFunctionalSpec extends Specification {
               logger: com.github.timic.ratpack.sentry.RatpackHttpInterfaceFunctionalSpec,
               platform: java,
               environment: LOCAL,
+              breadcrumbs: {
+                values: [{
+                  category: ratpack_execution,
+                  data: {
+                    exec_type: COMPUTE
+                  }
+                }]
+              },
               extra: {
                 x-user: foo,
                 mdc-tag: mdc-val
