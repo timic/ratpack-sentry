@@ -54,6 +54,7 @@ publishing {
       pom {
         name = "ratpack-sentry"
         description = "Library to integrate Sentry an error tracking solution and Ratpack web-framework."
+        url = 'https://github.com/timic/ratpack-sentry'
         licenses {
           license {
             name = 'The Apache License, Version 2.0'
