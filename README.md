@@ -1,4 +1,4 @@
-[![Download](https://api.bintray.com/packages/timic/generic/ratpack-sentry/images/download.svg)](https://bintray.com/timic/generic/ratpack-sentry/_latestVersion)
+[![Maven](https://img.shields.io/maven-central/v/com.github.timic/ratpack-sentry)](https://search.maven.org/search?q=g:%22com.github.timic%22%20AND%20a:%22ratpack-sentry%22)
 [![Build Status](https://travis-ci.org/timic/ratpack-sentry.svg?branch=master)](https://travis-ci.org/timic/ratpack-sentry)
 [![codecov](https://codecov.io/gh/timic/ratpack-sentry/branch/master/graph/badge.svg)](https://codecov.io/gh/timic/ratpack-sentry)
 
@@ -11,7 +11,7 @@ Via gradle:
 
 ```groovy
 repositories {
-    jcenter()
+    mavenCentral()
 }
 
 dependencies {
